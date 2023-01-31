@@ -1,0 +1,37 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+
+<?php
+$galleryImages = $this->getGalleryImages();
+$product = $this->getProduct();
+?>
+
+<div class="pdp-gallary-wrapper">
+    <div class="gallary-images">
+        <?php foreach ($galleryImages as $image): ?>
+            <div class="image">
+                <a href="javascript:void(0);" class="gallary-image"><img src="<?= $image->getData('medium_image_url')?>" alt="<?= $product->getName() ?>" />
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+{
+    ".gallary-images": {
+        "Magento_Catalog/js/pdpmobileslider" : {}
+    }
+}
+</script>
+

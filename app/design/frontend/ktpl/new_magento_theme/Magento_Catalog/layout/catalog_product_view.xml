@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="page.main.title" destination="product.info.main" before="-"/>
+        <move element="product.info.stock.sku" destination="product.info.price" after="product.price.final"/>
+        <move element="product.info.review" destination="product.info.main" before="product.info.price"/>
+		
+		<referenceContainer name="main">
+			<container name="pdp.top.content" label="PDP Top Content" htmlTag="div" htmlClass="pdp-top-content" before="-"/>
+			<block class="Magento\Framework\View\Element\Template" name="editor-note" template="Magento_Catalog::product/view/editor-note.phtml" after="-"/>
+		</referenceContainer>
+		<referenceBlock name="product.info.main" >
+            <block class="Magento\Framework\View\Element\Template" name="offer-block" template="Magento_Catalog::product/view/offer-text.phtml" after="-"/>
+        </referenceBlock>
+		
+		<move element="product.info.details" destination="pdp.top.content" before="-" />
+		<move element="product.info.main" destination="pdp.top.content" after="-" />
+		<move element="product.info.media" destination="pdp.top.content" before="product.info.main" />
+		
+		<referenceBlock name="catalog.product.related" remove="true"/>		
+
+		<move element="product.info.social" destination="product.info.media" before="-" />
+		<referenceBlock name="view.addto.compare" remove="true" />
+		<referenceBlock name="product.info.review" remove="true" />
+        <referenceBlock name="product.info.sku" remove="true" />
+		<referenceBlock name="product.info.stock.sku" remove="true"/>
+		<referenceBlock name="product.info.upsell" remove="true"/>
+	
+    </body>
+</page>
